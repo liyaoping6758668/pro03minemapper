@@ -11,20 +11,5 @@ import java.util.List;
  * @date 2020/2/14-20:53
  */
 public interface EmployeeService {
-    Employee getOne(Employee employeeQueryCondition);
-
-    Employee getEmployeeById(Integer empid);
-
-
-    void saveEmployee(Employee employee);
-
-    void saveEmployeeSelective(Employee employee);
-
-    void updateEmployeeSelective(Employee employee);
-
-    void deleteByPrimaryKey(Integer empid);
-
-    List<Employee> getEmpListByExample(Example example);
-
-    List<Employee> getEmpListByRowBounds(RowBounds rowBounds);
+    List<Employee> findAll();
 }

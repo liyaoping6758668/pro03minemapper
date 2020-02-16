@@ -22,48 +22,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Override
-    public Employee getOne(Employee employeeQueryCondition) {
-        Employee employee = employeeMapper.selectOne(employeeQueryCondition);
-        return employee;
-    }
-
-    @Override
-    public Employee getEmployeeById(Integer empid) {
-        Employee employee = employeeMapper.selectByPrimaryKey(empid);
-        return employee;
-    }
-
-    @Override
-    public void saveEmployee(Employee employee) {
-        employeeMapper.insert(employee);
-    }
-
-    @Override
-    public void saveEmployeeSelective(Employee employee) {
-        employeeMapper.insertSelective(employee);
-    }
-
-    @Override
-    public void updateEmployeeSelective(Employee employee) {
-        employeeMapper.updateByPrimaryKeySelective(employee);
-    }
-
-    @Override
-    public void deleteByPrimaryKey(Integer empid) {
-        employeeMapper.deleteByPrimaryKey(empid);
-    }
-
-    @Override
-    public List<Employee> getEmpListByExample(Example example) {
-        List<Employee> employees = employeeMapper.selectByExample(example);
+    public List<Employee> findAll() {
+        List<Employee> employees = employeeMapper.selectAll();
         return employees;
     }
-
-    @Override
-    public List<Employee> getEmpListByRowBounds(RowBounds rowBounds) {
-        List<Employee> employees = employeeMapper.selectByRowBounds(null, rowBounds);
-        return employees;
-    }
-
-
 }

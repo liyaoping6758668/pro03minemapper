@@ -1,23 +1,25 @@
 package com.ping.mapper;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import javax.sql.DataSource;
-
-import org.junit.Test;
-import org.springframework.context.ApplicationContext;
+import com.ping.mapper.entities.Employee;
+import com.ping.mapper.service.EmployeeService;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
+
+/**
+ * 测试通用mapper自定义接口
+ */
 public class MapperTest {
-	
-	private ApplicationContext iocContainer = new ClassPathXmlApplicationContext("spring-context.xml");
-	
-	@Test
-	public void testDataSource() throws SQLException {
-		DataSource dataSource = iocContainer.getBean(DataSource.class);
-		Connection connection = dataSource.getConnection();
-		System.out.println(connection);
+
+	public static void main(String[] args) {
+
+		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-context.xml");
+		EmployeeService employeeServiceImpl = (EmployeeService) applicationContext.getBean("employeeServiceImpl");
+		List<Employee> employeeList = employeeServiceImpl.findAll();
+		for (Employee employee:employeeList) {
+			System.out.println(employee);
+		}
+
 	}
 	
 }
